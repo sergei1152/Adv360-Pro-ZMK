@@ -38,16 +38,21 @@
         compatible = "zmk,keymap";
 
 
+        // this is the layer used on macos
+        // this is layer 0
         default_layer {
             bindings = <
  &kp EQUAL     &kp N1   &kp N2    &kp N3     &kp N4  &kp N5              &tog 1                                                                    &mo 3  &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
-   &kp TAB      &kp Q    &kp W     &kp E      &kp R   &kp T               &none                                                                    &none   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
- &kp ESC &hm LGUI A &hm LALT S &hm LSHIFT D &hm LCTRL F  &kp G               &none  &kp LCMD  &kp LALT                  &kp RIGHT_ALT   &kp RCMD      &none   &kp H   &hm RCTRL J      &hm RSHIFT K     &hm RALT L  &hm RGUI SEMI    &kp SQT
+   &kp TAB      &kp Q    &kp W     &kp E      &kp R   &kp T               &tog 0                                                                    &tog 5   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
+ &kp ESC &hm LGUI A &hm LALT S &hm LSHIFT D &hm LCTRL F  &kp G               &tog 4  &kp LCMD  &kp LALT                  &kp RIGHT_ALT   &kp RCMD      &none   &kp H   &hm RCTRL J      &hm RSHIFT K     &hm RALT L  &hm RGUI SEMI    &kp SQT
  &kp LSHFT      &kp Z    &kp X     &kp C      &kp V   &kp B                                &kp HOME                      &kp PG_UP                         &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp RSHFT
      &mo 2  &kp GRAVE  &kp ESC  &kp LEFT  &kp RIGHT                    &kp BSPC   &kp DEL   &kp END                      &kp PG_DN  &kp ENTER  &kp SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT      &mo 2
             >;
         };
 
+        // this is layer 1
+        // basically turns right side of keyboard into num pad
+        // default layer provided by Kinesis. Toggled by pressing the Kp key
         layer_keypad {
             bindings = <
  &kp EQUAL     &kp N1    &kp N2    &kp N3     &kp N4  &kp N5              &trans                                                                 &mo 3  &kp N6  &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp MINUS
@@ -58,6 +63,8 @@
             >;
         };
 
+        // This is layer 2. Activated by holding a Fn key. Allows you to press F1-F12
+        // Default layer of kinesis
         layer_fn {
             bindings = <
  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6            &tog 1                                                   &mo 3  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
@@ -68,6 +75,9 @@
             >;
         };
 
+        // Basically BT layer. We can use this in feature as another way to switch layers but unecessary.
+        // Default layer from kinesis
+        // layer 3
         layer_mod {
             bindings = <
   &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &none                                                                          &trans   &none       &none       &none   &none   &none   &none
@@ -78,5 +88,28 @@
             >;
         };
 
+        // basically same thing as macos layer, but swap the thumb cluster "CMD" key into "CTRL" so many shortcuts just work better
+        // this is layer 4
+        linux_layer {
+            bindings = <
+ &kp EQUAL     &kp N1   &kp N2    &kp N3     &kp N4  &kp N5              &tog 1                                                                    &mo 3  &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
+   &kp TAB      &kp Q    &kp W     &kp E      &kp R   &kp T               &tog 0                                                                    &tog 5 &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
+ &kp ESC &hm LGUI A &hm LALT S &hm LSHIFT D &hm LCTRL F  &kp G               &tog 4  &kp LCTRL  &kp LALT                  &kp RIGHT_ALT   &kp RCTRL      &none   &kp H   &hm RCTRL J      &hm RSHIFT K     &hm RALT L  &hm RGUI SEMI    &kp SQT
+ &kp LSHFT      &kp Z    &kp X     &kp C      &kp V   &kp B                                &kp HOME                      &kp PG_UP                         &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp RSHFT
+     &mo 2  &kp GRAVE  &kp ESC  &kp LEFT  &kp RIGHT                    &kp BSPC   &kp DEL   &kp END                      &kp PG_DN  &kp ENTER  &kp SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT      &mo 2
+            >;
+        };
+
+        // basically same thing as linux layer but we disable home-row mods for the left side of the keyboard
+        // this is layer 5
+        gaming_layer {
+            bindings = <
+ &kp EQUAL     &kp N1   &kp N2    &kp N3     &kp N4  &kp N5              &tog 1                                                                    &mo 3  &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
+   &kp TAB      &kp Q    &kp W     &kp E      &kp R   &kp T               &tog 0                                                                    &tog 5   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
+ &kp ESC &kp A &kp S &kp D &kp F  &kp G                                 &tog 4  &kp LCTRL  &kp LALT                  &kp RIGHT_ALT   &kp RCTRL      &none   &kp H   &hm RCTRL J      &hm RSHIFT K     &hm RALT L  &hm RGUI SEMI    &kp SQT
+ &kp LSHFT      &kp Z    &kp X     &kp C      &kp V   &kp B                                &kp HOME                      &kp PG_UP                         &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp RSHFT
+     &mo 2  &kp GRAVE  &kp ESC  &kp LEFT  &kp RIGHT                    &kp BSPC   &kp DEL   &kp END                      &kp PG_DN  &kp ENTER  &kp SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT      &mo 2
+            >;
+        };
     };
 };
